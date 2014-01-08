@@ -126,7 +126,8 @@ public class Console implements EntryPoint {
         mainForm.setLayoutMargin(5);
         mainForm.setWidth100();
         mainForm.setHeight100();
-        mainForm.setBackgroundColor("#F0F0F0");
+//        mainForm.setBackgroundColor("#F0F0F0");
+        mainForm.setBackgroundColor("#FFFFFF");
         // tool bar
         HLayout topPanel = new HLayout();
 
@@ -208,10 +209,46 @@ public class Console implements EntryPoint {
         statusBar.addMember(statusLabel);
 
         // mainForm.addMember(toolBar);
-        mainForm.addMember(topPanel);
-        mainForm.addMember(sp2);
-        mainForm.addMember(bottomPanel);
-        mainForm.addMember(statusBar);
+//        mainForm.addMember(topPanel);
+        
+        Label lbl = new Label("DEFAULT");
+        
+        HLayout p = new HLayout();
+        p.setHeight(50);
+        p.addMember(lbl);
+        p.setAlign(Alignment.CENTER);
+        p.setDefaultLayoutAlign(Alignment.CENTER);
+        p.setLayoutAlign(Alignment.CENTER);
+        
+        mainForm.addMember(new TopBar());
+        mainForm.setAlign(Alignment.CENTER);
+        
+        HLayout viewPort1 = new HLayout();
+        viewPort1.setAlign(Alignment.CENTER);        
+        viewPort1.setDefaultLayoutAlign(Alignment.CENTER);
+        viewPort1.setLayoutAlign(Alignment.CENTER);
+        viewPort1.setWidth("90%");
+        
+        VLayout layout = new VLayout();
+        
+        viewPort1.addMember(layout);
+        
+        layout.setAlign(Alignment.CENTER);
+        layout.setDefaultLayoutAlign(Alignment.CENTER);
+        
+//        layout.setWidth100();
+        MainView mv = new MainView(this);
+        mv.setLayoutAlign(Alignment.CENTER);
+        mv.setAlign(Alignment.CENTER);
+        mv.setDefaultLayoutAlign(Alignment.CENTER);
+        
+        layout.addMember(p);
+        layout.addMember(mv);
+        
+        mainForm.addMember(viewPort1);
+//        mainForm.addMember(new MainView(this));
+//        mainForm.addMember(bottomPanel);
+//        mainForm.addMember(statusBar);
 
         mainForm.draw();
 
