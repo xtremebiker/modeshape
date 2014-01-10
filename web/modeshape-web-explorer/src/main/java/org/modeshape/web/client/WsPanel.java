@@ -23,22 +23,44 @@
  */
 package org.modeshape.web.client;
 
+import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.widgets.Label;
+import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 /**
  *
  * @author kulikov
  */
-public class MainView extends VLayout {
-    private final NodeBrowser browser;
+public class WsPanel extends VLayout {
     
-    public MainView(Console console) {
-        super();        
-        browser = new NodeBrowser(console);                
-        addMember(browser);
+    private Label value = new Label();
+    
+    public WsPanel() {
+        super();
+        setStyleName("workspace");
+        setWidth100();
+        setHeight(50);
+        setAlign(Alignment.CENTER);
+        setLayoutAlign(Alignment.CENTER);
+        setDefaultLayoutAlign(Alignment.CENTER);   
+        
+        HLayout panel = new HLayout();
+        addMember(panel);
+        
+        panel.setWidth("70%");
+        panel.setHeight100();
+        panel.setAlign(Alignment.CENTER);
+        
+        HLayout textPanel = new HLayout();
+        panel.addMember(textPanel);
+        
+        Label wsLabel = new Label("Workspace");
+        textPanel.addMember(wsLabel);
+        textPanel.addMember(value);
     }
     
-    public void init(String path) {
-        browser.init(path);
+    public void setValue(String value) {
+        this.value.setContents(value);
     }
 }

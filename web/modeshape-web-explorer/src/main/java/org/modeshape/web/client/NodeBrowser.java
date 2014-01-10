@@ -43,7 +43,7 @@ import org.modeshape.web.shared.JcrNode;
  *
  * @author kulikov
  */
-public class NodeBrowser extends Tab {
+public class NodeBrowser extends VLayout{
     
     private Console console;
     
@@ -52,14 +52,11 @@ public class NodeBrowser extends Tab {
     private final ListGrid grid = new ListGrid();
     
     public NodeBrowser(Console console) {
-        super("Browse");
+        super();
         this.console = console;
         
-        VLayout layout = new VLayout();
-        setPane(layout);
-
         
-        layout.addMember(grid);
+        addMember(grid);
 
         ListGridField iconField = new ListGridField("icon", " ");
         iconField.setType(ListGridFieldType.IMAGE);

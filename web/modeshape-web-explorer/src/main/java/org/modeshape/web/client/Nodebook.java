@@ -23,22 +23,38 @@
  */
 package org.modeshape.web.client;
 
+import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 /**
  *
  * @author kulikov
  */
-public class MainView extends VLayout {
-    private final NodeBrowser browser;
+public class Nodebook extends HLayout {
     
-    public MainView(Console console) {
-        super();        
-        browser = new NodeBrowser(console);                
-        addMember(browser);
-    }
+    private VLayout[] pages;
     
-    public void init(String path) {
-        browser.init(path);
+    public Nodebook(Console console){
+        super();   
+        pages = new VLayout[] {new MainView(console)};
+        
+        setAlign(Alignment.CENTER);        
+        setDefaultLayoutAlign(Alignment.CENTER);
+        setLayoutAlign(Alignment.CENTER);        
+        setWidth("70%");
+        
+        VLayout layout = new VLayout();
+        addMember(layout);
+        
+        
+        layout.setAlign(Alignment.CENTER);
+        layout.setDefaultLayoutAlign(Alignment.CENTER);
+        
+        HLayout vstrut = new HLayout();
+        vstrut.setHeight(10);
+        
+        layout.addMember(pages[0]);
+        layout.addMember(vstrut);
     }
 }

@@ -126,8 +126,8 @@ public class Console implements EntryPoint {
         mainForm.setLayoutMargin(5);
         mainForm.setWidth100();
         mainForm.setHeight100();
-//        mainForm.setBackgroundColor("#F0F0F0");
         mainForm.setBackgroundColor("#FFFFFF");
+
         // tool bar
         HLayout topPanel = new HLayout();
 
@@ -208,30 +208,25 @@ public class Console implements EntryPoint {
         statusLabel.setWidth(300);
         statusBar.addMember(statusLabel);
 
-        // mainForm.addMember(toolBar);
-//        mainForm.addMember(topPanel);
         
-        Label lbl = new Label("DEFAULT");
-        
-        HLayout p = new HLayout();
-        p.setHeight(50);
-        p.addMember(lbl);
-        p.setAlign(Alignment.CENTER);
-        p.setDefaultLayoutAlign(Alignment.CENTER);
-        p.setLayoutAlign(Alignment.CENTER);
-        
-        mainForm.addMember(new TopBar());
         mainForm.setAlign(Alignment.CENTER);
         
-        HLayout viewPort1 = new HLayout();
+        mainForm.addMember(new TopBar());        
+        mainForm.addMember(new WsPanel());
+        mainForm.addMember(new Nodebook(this));
+        mainForm.addMember(new Footer());
+        
+/*        HLayout viewPort1 = new HLayout();
         viewPort1.setAlign(Alignment.CENTER);        
         viewPort1.setDefaultLayoutAlign(Alignment.CENTER);
         viewPort1.setLayoutAlign(Alignment.CENTER);
-        viewPort1.setWidth("90%");
+        viewPort1.setWidth("70%");
         
         VLayout layout = new VLayout();
         
         viewPort1.addMember(layout);
+        viewPort1.setMembersMargin(10);
+        viewPort1.setMargin(10);
         
         layout.setAlign(Alignment.CENTER);
         layout.setDefaultLayoutAlign(Alignment.CENTER);
@@ -242,14 +237,18 @@ public class Console implements EntryPoint {
         mv.setAlign(Alignment.CENTER);
         mv.setDefaultLayoutAlign(Alignment.CENTER);
         
-        layout.addMember(p);
+        HLayout vstrut = new HLayout();
+        vstrut.setHeight(10);
+        layout.addMember(vstrut);
         layout.addMember(mv);
         
         mainForm.addMember(viewPort1);
+        mainForm.addMember(new Footer());
+        
 //        mainForm.addMember(new MainView(this));
 //        mainForm.addMember(bottomPanel);
 //        mainForm.addMember(statusBar);
-
+*/
         mainForm.draw();
 
         navigator.showRoot();

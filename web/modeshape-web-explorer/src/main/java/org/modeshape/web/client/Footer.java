@@ -23,22 +23,35 @@
  */
 package org.modeshape.web.client;
 
+import com.smartgwt.client.types.Alignment;
+import com.smartgwt.client.widgets.Label;
+import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
 /**
  *
  * @author kulikov
  */
-public class MainView extends VLayout {
-    private final NodeBrowser browser;
+public class Footer extends VLayout {
     
-    public MainView(Console console) {
-        super();        
-        browser = new NodeBrowser(console);                
-        addMember(browser);
+    public Footer() {
+        super();
+        setBackgroundColor("#dddddd");
+        setStyleName("footer");
+        setWidth100();
+        setHeight(30);
+        setAlign(Alignment.CENTER);
+        setLayoutAlign(Alignment.CENTER);
+        setDefaultLayoutAlign(Alignment.CENTER);   
+        setMargin(10);
+        
+        HLayout panel = new HLayout();
+        addMember(panel);
+        
+        Label wsLabel = new Label("");
+        wsLabel.setWidth(300);
+        wsLabel.setContents("Modeshape web explorer 4.0");
+        panel.addMember(wsLabel);
     }
     
-    public void init(String path) {
-        browser.init(path);
-    }
 }
